@@ -27,16 +27,16 @@ router.post("/signin", async (req,res)=>{
             if(isMatch)
             {
                 console.log("Password Matched")
-                res.status(200).json("User Logged in succesfully");
+                res.status(200).json({message:"User Logged in succesfully"});
             }
             else
             {
-                res.status(400).send("Password Does Not Match");
+                res.status(400).json({Error:"Password Does Not Match"});
             }
         }
         else
         {
-            res.status(500).send("User does not exist");
+            res.status(500).json({Error:"User does not exist"});
         }
     }
     )
