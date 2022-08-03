@@ -19,15 +19,15 @@ router.post("/signin", async (req,res)=>{
         if(userlogin)
         {
             const isMatch= await bcrypt.compare(pass, userlogin.pass);
-
             const token= await userlogin.generateAuthToken();
             res.cookie("jwtoken",token,{
                 expires:new Date(Date.now()+2589200000),
-                httpOnly:true
+                httpOnly:true   
             });
             if(isMatch)
             {
-                res.status(200).send("User Logged in succesfully");
+                console.log("Password Matched")
+                res.status(200).json("User Logged in succesfully");
             }
             else
             {
